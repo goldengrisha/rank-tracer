@@ -1,4 +1,3 @@
-# search_rank_tool/entities.py
 from datetime import datetime
 from typing import Generator, List, Dict
 
