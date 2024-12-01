@@ -23,7 +23,6 @@ def get_rank(
         target_ranks = defaultdict(list)
 
         for page in range(1, max_pages + 1):
-            print(f"[*] Searching for query '{input_entity.query}' on page {page}")
             start = (page - 1) * 10 + 1
             url = f"https://www.googleapis.com/customsearch/v1?key={api_key}&cx={search_engine_id}&q={input_entity.query}&start={start}"
             response = requests.get(url)
