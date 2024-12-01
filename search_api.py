@@ -14,7 +14,7 @@ def get_rank(
     max_pages: int,
 ) -> List[OutputSearchEntity]:
     """
-    Fetch search rankings for given queries and domains.
+    Fetch search rankings for given queries and urls.
     """
     timestamp = datetime.now()
     output_search_entities: List[OutputSearchEntity] = []
@@ -38,15 +38,15 @@ def get_rank(
 
             for i, item in enumerate(search_items, start=1):
                 link = item.get("link")
-                for domain in input_entity.domains:
-                    if link == domain:
+                for url in input_entity.urls:
+                    if link == url:
                         rank = i + start - 1
                         print(
-                            f"[+] Found {domain} at rank #{rank} for query '{input_entity.query}'"
+                            f"[+] Found {url} at rank #{rank} for query '{input_entity.query}'"
                         )
-                        target_ranks[domain].append(rank)
+                        target_ranks[url].append(rank)
 
-        for domain, ranks in target_ranks.items():
-            output_search_entities.append(OutputSearchEntity(domain, ranks, timestamp))
+        for url, ranks in target_ranks.items():
+            output_search_entities.append(OutputSearchEntity(url, ranks, timestamp))
 
     return output_search_entities
