@@ -1,4 +1,3 @@
-# search_rank_tool/main.py
 from config import API_KEY, SEARCH_ENGINE_ID, OUTPUT_FILE, MAX_PAGES
 from entities import InputSearchEntity
 from search_api import get_rank
