@@ -1,6 +1,6 @@
-# search_rank_tool/search_api.py
 import requests
 import urllib.parse as p
+
 from collections import defaultdict
 from datetime import datetime
 from typing import List, Optional, Dict
