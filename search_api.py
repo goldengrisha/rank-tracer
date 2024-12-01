@@ -3,7 +3,7 @@ import urllib.parse as p
 
 from collections import defaultdict
 from datetime import datetime
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Any
 from entities import InputSearchEntity, OutputSearchEntity
 
 
@@ -20,7 +20,7 @@ def get_rank(
     output_search_entities: List[OutputSearchEntity] = []
 
     for input_entity in input_search_entities:
-        target_ranks = defaultdict(list)
+        target_ranks: Dict[str, List[int]] = defaultdict(list)
 
         for page in range(1, max_pages + 1):
             start = (page - 1) * 10 + 1
@@ -28,19 +28,18 @@ def get_rank(
             response = requests.get(url)
 
             if response.status_code != 200:
-                print(f"[!] API Error {response.status_code}: {response.text}")
+                print(f"Error {response.status_code}: {response.text}")
                 break
 
             data = response.json()
-            search_items: Optional[List[Dict]] = data.get("items")
+            search_items: Optional[List[Dict[Any, Any]]] = data.get("items")
             if not search_items:
                 break
 
             for i, item in enumerate(search_items, start=1):
                 link = item.get("link")
-                domain_name = p.urlparse(link).netloc
                 for domain in input_entity.domains:
-                    if domain_name == domain:
+                    if link == domain:
                         rank = i + start - 1
                         print(
                             f"[+] Found {domain} at rank #{rank} for query '{input_entity.query}'"
