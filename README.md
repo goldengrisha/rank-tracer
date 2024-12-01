@@ -14,3 +14,22 @@ This Python-based tool tracks search rankings for specific domains and queries u
    ```bash
    git clone git@github.com:goldengrisha/rank-tracer.git
    cd rank-tracer
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Add your API key and Search Engine ID in `config.py`.
+
+## Usage
+
+Run the tool:
+```bash
+python -m main
+```
+
+Output will be saved to `rankings.csv`.
+
+
