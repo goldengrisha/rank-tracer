@@ -16,12 +16,7 @@ This Python-based tool tracks search rankings for specific domains and queries u
    cd rank-tracer
    ```
 
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Add your API key and Search Engine ID in `config.py`.
+2. Add your API key and Search Engine ID in `config.py`.
 
 ## Usage
 
