@@ -1,5 +1,5 @@
-# search_rank_tool/csv_writer.py
 import csv
+
 from typing import List
 from entities import OutputSearchEntity
 
